@@ -1,3 +1,4 @@
+import { Iterator } from "./Iterator";
 import { List } from "./List";
 
 export class ArrayList<T = any> implements List<T> {
@@ -11,6 +12,12 @@ export class ArrayList<T = any> implements List<T> {
         } else {
             this.arr = c.toArray();
         }
+    }
+
+    // interface Iterable
+
+    public iterator(): Iterator<T> {
+        throw new Error("Method not implemented.");
     }
 
     // interface Collection
@@ -66,10 +73,6 @@ export class ArrayList<T = any> implements List<T> {
 
     public isEmpty(): boolean {
         return this.arr.length === 0;
-    }
-
-    public iterator(): Iterator<T> {
-        throw new Error("Method not implemented.");
     }
 
     public remove(index: number): T;

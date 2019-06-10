@@ -1,4 +1,6 @@
-export interface Collection<T = any> {
+import { Iterable } from "./Iterable";
+
+export interface Collection<T = any> extends Iterable {
     add(val: T): boolean;
     addAll(c: Collection): boolean;
     clear(): void;
@@ -11,5 +13,4 @@ export interface Collection<T = any> {
     isEmpty(): boolean;
     size(): number;
     toArray(): T[];
-    iterator(): Iterator<T>;
 }
