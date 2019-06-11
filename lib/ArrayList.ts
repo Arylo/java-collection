@@ -57,14 +57,15 @@ export class ArrayList<T = any> implements List<T> {
     }
 
     public equals(c: List<T>): boolean {
-        if (this.size() === c.size()) {
-            for (let i = 0, length = c.toArray().length; i < length; i++) {
-                if (this.arr[i] !== c.get(i)) {
-                    return false;
-                }
+        if (this.size() !== c.size()) {
+            return false;
+        }
+        for (let i = 0, length = c.toArray().length; i < length; i++) {
+            if (this.arr[i] !== c.get(i)) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public hashCode(): number {
@@ -88,7 +89,7 @@ export class ArrayList<T = any> implements List<T> {
         }
     }
     public removeAll(c: List<T>): boolean {
-        this.arr = this.arr.filter((item) => c.contains(item));
+        this.arr = this.arr.filter((item) => !c.contains(item));
         return true;
     }
 
