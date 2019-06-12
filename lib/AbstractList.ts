@@ -132,12 +132,12 @@ export abstract class AbstractList<T = any> extends AbstractCollection<T>
     }
 
     public hashCode(): number {
-        const arrLength = this.arr.length;
+        const arrLength = this.size();
         if (
             this.hashDeep !== arrLength ||
-            (this.arr.length !== 0 && this.hash === 0)
+            (this.size() !== 0 && this.hash === 0)
         ) {
-            this.hash = HashCode.fromArray(this.arr);
+            this.hash = HashCode.fromArray(this.toArray());
             this.hashDeep = this.size();
         }
         return this.hash;

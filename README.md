@@ -45,9 +45,11 @@ npm install --save java-collection
 |- java.util.function.Consumer<E>
 |- java.lang.Iterable<E>
 |    |- java.util.Collection<E>
-|    |    |- java.util.List<E>
+|         |- java.util.List<E>
+|         |- java.util.Set<E>
 |- java.util.AbstractCollection<E>
      |- java.util.AbstractList<E>
-          |- java.util.ArrayList<E>
-          |- java.util.Vector<E>
+     |    |- java.util.ArrayList<E>
+     |    |- java.util.Vector<E>
+     |- java.util.AbstractList<E>
 ```

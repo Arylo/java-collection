@@ -8,9 +8,9 @@ export interface Collection<T = any> extends Iterable<T> {
     containsAll(c: Collection<T>): boolean;
     equals(c: Collection<T>): boolean;
     hashCode(): number;
+    isEmpty(): boolean;
     remove(val: T): boolean;
     removeAll(c: Collection<T>): boolean;
-    isEmpty(): boolean;
     size(): number;
     toArray(): T[];
 }
