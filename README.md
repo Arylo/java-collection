@@ -1,6 +1,6 @@
-# java collection for node.js
+# Java Collection for Node.js
 
-The project is generated in [`arylo-init`](https://www.npmjs.com/package/arylo-init)
+为了方便在工作中将`JAVA`系统迁移为`Nodejs`而编写的库
 
 [![node][NPM_URL]][NPM_HREF]
 [![Travis][TRAVIS_URL]][TRAVIS_HREF]
@@ -23,7 +23,23 @@ The project is generated in [`arylo-init`](https://www.npmjs.com/package/arylo-i
 [DAVID_HREF]: https://github.com/Arylo/java-collection
 [AUTHOR_URL]: https://img.shields.io/badge/Author-AryloYeung-blue.svg?style=flat-square&maxAge=7200
 [AUTHOR_HREF]: https://github.com/arylo
-[LICENSE_URL]: https://img.shields.io/github/license/Arylo/npm-project-init.svg?style=flat-square&maxAge=7200
+[LICENSE_URL]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&maxAge=7200
 [LICENSE_HREF]: https://opensource.org/licenses/MIT
 [LICENSE_996_URL]: https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg?style=flat-square&maxAge=7200
 [LICENSE_996_HREF]: https://github.com/996icu/996.ICU
+
+## Installation
+
+```bash
+npm install --save java-collection
+```
+
+## Support
+
+```
+|
+|- java.lang.Iterable<T>
+|- java.util.Iterator<E>
+|- java.util.Collection<E>
+|- java.util.ArrayList<E>
+```

@@ -1,8 +1,11 @@
 import { List } from "./interfaces/List";
 import { Iterator } from "./Iterator";
+import { HashCode } from "./utils/HashCode";
 
 export class ArrayList<T = any> implements List<T> {
     private arr: T[] = [];
+    private hash = 0;
+    private hashDeep = 0;
 
     constructor(c?: List<T> | number) {
         if (typeof c === "undefined") {
@@ -29,24 +32,29 @@ export class ArrayList<T = any> implements List<T> {
             return false;
         } else if (typeof index === "number") {
             this.arr.splice(index, 0, val);
+            this.clearHashCode();
             return;
         } else {
             this.arr.push(index);
+            this.clearHashCode();
             return true;
         }
     }
     public addAll(c: List<T>): boolean {
         this.arr = this.arr.concat(c.toArray());
+        this.clearHashCode();
         return true;
     }
 
     public clear(): void {
         this.arr = [];
+        this.clearHashCode();
     }
 
     public contains(val: T): boolean {
         return this.arr.indexOf(val) !== -1;
     }
+
     public containsAll(c: List<T>): boolean {
         for (const item of this.arr) {
             if (!c.contains(item)) {
@@ -57,7 +65,7 @@ export class ArrayList<T = any> implements List<T> {
     }
 
     public equals(c: List<T>): boolean {
-        if (this.size() !== c.size()) {
+        if (this.size() !== c.size() || this.hashCode() !== c.hashCode()) {
             return false;
         }
         for (let i = 0, length = c.toArray().length; i < length; i++) {
@@ -69,7 +77,15 @@ export class ArrayList<T = any> implements List<T> {
     }
 
     public hashCode(): number {
-        return Date.now();
+        const arrLength = this.arr.length;
+        if (
+            this.hashDeep !== arrLength ||
+            (this.arr.length !== 0 && this.hash === 0)
+        ) {
+            this.hash = HashCode.fromArray(this.arr);
+            this.hashDeep = this.size();
+        }
+        return this.hash;
     }
 
     public isEmpty(): boolean {
@@ -82,14 +98,18 @@ export class ArrayList<T = any> implements List<T> {
         if (typeof val === "undefined") {
             return false;
         } else if (typeof val === "number") {
-            return this.arr.splice(val, 1)[0];
+            const v = this.arr.splice(val, 1)[0];
+            this.clearHashCode();
+            return v;
         } else {
             this.arr = this.arr.filter((item) => item !== val);
+            this.clearHashCode();
             return true;
         }
     }
     public removeAll(c: List<T>): boolean {
         this.arr = this.arr.filter((item) => !c.contains(item));
+        this.clearHashCode();
         return true;
     }
 
@@ -117,6 +137,14 @@ export class ArrayList<T = any> implements List<T> {
 
     public set(index: number, val: T): T {
         this.arr[index] = val;
+        this.clearHashCode();
         return val;
+    }
+
+    private clearHashCode() {
+        if (this.hash !== 0) {
+            this.hash = 0;
+            this.hashDeep = 0;
+        }
     }
 }

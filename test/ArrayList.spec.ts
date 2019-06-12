@@ -145,7 +145,14 @@ test("Method `equals`", (t) => {
 test("Method `hashCode`", (t) => {
     const collection = new ArrayList<string>();
 
-    t.is(typeof collection.hashCode(), "number");
+    let val1: number;
+    let val2: number;
+
+    val1 = collection.hashCode();
+    t.is(typeof val1, "number");
+    collection.add("111");
+    val2 = collection.hashCode();
+    t.not(val1, val2);
 });
 
 test("Method `isEmpty`", (t) => {
