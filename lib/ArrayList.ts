@@ -1,5 +1,5 @@
+import { List } from "./interfaces/List";
 import { Iterator } from "./Iterator";
-import { List } from "./List";
 
 export class ArrayList<T = any> implements List<T> {
     private arr: T[] = [];
@@ -17,7 +17,7 @@ export class ArrayList<T = any> implements List<T> {
     // interface Iterable
 
     public iterator(): Iterator<T> {
-        throw new Error("Method not implemented.");
+        return new Iterator(this.arr);
     }
 
     // interface Collection

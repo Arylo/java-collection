@@ -1,6 +1,6 @@
-export * from "./Collection";
-export * from "./List";
-export * from "./Iterator";
-export * from "./Iterable";
+export * from "./interfaces/Collection";
+export * from "./interfaces/List";
+export * from "./interfaces/Iterable";
 
+export * from "./Iterator";
 export * from "./ArrayList";

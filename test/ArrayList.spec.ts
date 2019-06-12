@@ -23,14 +23,34 @@ test("Method `add`", (t) => {
     t.deepEqual(collection.toArray(), ["111", "123", "222", "132"]);
 });
 
-test.skip("Method `iterator`", (t) => {
+test("Method `iterator`", (t) => {
     const collection = new ArrayList<string>();
 
     collection.add("111");
     collection.add("222");
     collection.add("333");
 
-    t.deepEqual(collection.toArray(), ["111", "222", "333"]);
+    const iterator = collection.iterator();
+
+    t.is(iterator.next(), "111");
+    t.is(iterator.next(), "222");
+    t.is(iterator.next(), "333");
+});
+
+test("Method `iterator-remove`", (t) => {
+    const collection = new ArrayList<string>();
+
+    collection.add("111");
+    collection.add("222");
+    collection.add("333");
+
+    const iterator = collection.iterator();
+
+    iterator.next();
+    iterator.remove();
+
+    t.is(collection.size(), 2);
+    t.deepEqual(collection.toArray(), ["222", "333"]);
 });
 
 test("Method `addAll`", (t) => {
