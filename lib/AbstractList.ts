@@ -1,5 +1,6 @@
 import { AbstractCollection } from "./AbstractCollection";
 import { Collection } from "./interfaces/Collection";
+import { Consumer } from "./interfaces/Consumer";
 import { List } from "./interfaces/List";
 import { Iterator } from "./Iterator";
 import { HashCode } from "./utils/HashCode";
@@ -9,6 +10,14 @@ export abstract class AbstractList<T = any> extends AbstractCollection<T>
     protected arr: T[] = [];
 
     // interface Iterable
+
+    public forEach(fn: Consumer<T> | ((item: T) => any)) {
+        if (typeof fn === "function") {
+            this.arr.forEach(fn);
+        } else {
+            this.arr.forEach(fn.accept);
+        }
+    }
 
     public iterator() {
         return new Iterator(this.arr);

@@ -1,10 +1,15 @@
 import { Collection } from "./interfaces/Collection";
+import { Consumer } from "./interfaces/Consumer";
 import { Iterator } from "./interfaces/Iterator";
 
 export abstract class AbstractCollection<T = any> extends Object
     implements Collection<T> {
     protected hash: number = 0;
     protected hashDeep = 0;
+
+    public forEach(fn: Consumer<T> | ((item: T) => any)) {
+        throw new Error("Method not implemented.");
+    }
 
     // public add(val: T): boolean;
     public add(...args: any[]): any {
