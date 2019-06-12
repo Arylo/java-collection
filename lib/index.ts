@@ -5,6 +5,7 @@ export * from "./interfaces/Iterable";
 export * from "./interfaces/Iterator";
 export * from "./interfaces/RandomAccess";
 export * from "./interfaces/Serializable";
+export * from "./interfaces/Consumer";
 
 export * from "./AbstractCollection";
 export * from "./AbstractList";

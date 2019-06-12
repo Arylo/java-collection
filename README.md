@@ -42,6 +42,7 @@ npm install --save java-collection
 |- java.io.Serializable
 |- java.util.RandomAccess
 |- java.util.Iterator<E>
+|- java.util.function.Consumer<E>
 |- java.lang.Iterable<E>
 |    |- java.util.Collection<E>
 |    |    |- java.util.List<E>
