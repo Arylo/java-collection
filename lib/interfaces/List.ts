@@ -7,10 +7,9 @@ export interface List<T = any> extends Collection<T> {
     remove(index: number): T;
     remove(val: T): boolean;
 
-    set(index: number, val: T): T;
     get(index: number): T;
+    set(index: number, val: T): T;
 
     indexOf(val: T): number;
     lastIndexOf(val: T): number;
-    addAll(c: List<T>): boolean;
 }

@@ -1,8 +1,8 @@
 import { Iterable } from "./Iterable";
 
-export interface Collection<T = any> extends Iterable {
+export interface Collection<T = any> extends Iterable<T> {
     add(val: T): boolean;
-    addAll(c: Collection): boolean;
+    addAll(c: Collection<T>): boolean;
     clear(): void;
     contains(val: T): boolean;
     containsAll(c: Collection<T>): boolean;

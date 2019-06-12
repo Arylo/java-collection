@@ -1,7 +1,7 @@
 {
   "name": "java-collection",
   "version": "1.1.0",
-  "description": "The project is generated in [`arylo-init`](https://www.npmjs.com/package/arylo-init)",
+  "description": "Java Collection for Node.js（为了方便在工作中将JAVA系统迁移为Nodejs而编写的库",
   "main": "dist/index.js",
   "types": "lib/index.ts",
   "scripts": {

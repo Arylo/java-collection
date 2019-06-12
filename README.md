@@ -34,12 +34,19 @@
 npm install --save java-collection
 ```
 
-## Support
+## Supported
 
 ```
 |
-|- java.lang.Iterable<T>
+|- java.lang.Cloneable
+|- java.io.Serializable
+|- java.util.RandomAccess
 |- java.util.Iterator<E>
-|- java.util.Collection<E>
-|- java.util.ArrayList<E>
+|- java.lang.Iterable<E>
+|    |- java.util.Collection<E>
+|    |    |- java.util.List<E>
+|- java.util.AbstractCollection<E>
+     |- java.util.AbstractList<E>
+          |- java.util.ArrayList<E>
+          |- java.util.Vector<E>
 ```

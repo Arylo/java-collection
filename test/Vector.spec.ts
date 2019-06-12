@@ -1,17 +1,17 @@
 import test from "ava";
-import { ArrayList } from "../lib/ArrayList";
+import { Vector } from "../lib/Vector";
 
 test("Constructors ", (t) => {
-    let al: ArrayList;
+    let al: Vector;
     t.notThrows(() => {
-        al = new ArrayList();
-        al = new ArrayList(10);
-        al = new ArrayList(new ArrayList());
+        al = new Vector();
+        al = new Vector(10);
+        al = new Vector(new Vector());
     });
 });
 
 test("Method `for..of`", (t) => {
-    const collection = new ArrayList<string>();
+    const collection = new Vector<string>();
 
     collection.add("111");
     collection.add("222");

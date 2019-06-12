@@ -5,7 +5,7 @@ import { List } from "./interfaces/List";
 import { RandomAccess } from "./interfaces/RandomAccess";
 import { Serializable } from "./interfaces/Serializable";
 
-export class ArrayList<T = any> extends AbstractList<T>
+export class Vector<T = any> extends AbstractList<T>
     implements List<T>, RandomAccess, Cloneable, Serializable {
     constructor(c?: Collection<T> | number) {
         super();
