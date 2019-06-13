@@ -1,9 +1,9 @@
 import test from "ava";
-import { AbstractList } from "../lib/AbstractList";
+import { AbstractCollection } from "../lib/AbstractCollection";
 import { ArrayList } from "../lib/ArrayList";
 
 test("Method `add`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     collection.add("123");
     collection.add("132");
@@ -16,7 +16,7 @@ test("Method `add`", (t) => {
 });
 
 test("Method `iterator`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     collection.add("111");
     collection.add("222");
@@ -30,7 +30,7 @@ test("Method `iterator`", (t) => {
 });
 
 test("Method `iterator-remove`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     collection.add("111");
     collection.add("222");
@@ -46,8 +46,8 @@ test("Method `iterator-remove`", (t) => {
 });
 
 test("Method `addAll`", (t) => {
-    const collection1: AbstractList = new ArrayList<string>();
-    const collection2: AbstractList = new ArrayList<string>();
+    const collection1: AbstractCollection = new ArrayList<string>();
+    const collection2: AbstractCollection = new ArrayList<string>();
 
     collection1.add("111");
     collection1.add("222");
@@ -69,7 +69,7 @@ test("Method `addAll`", (t) => {
 });
 
 test("Method `clear`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     collection.add("111");
     collection.add("222");
@@ -81,7 +81,7 @@ test("Method `clear`", (t) => {
 });
 
 test("Method `contains`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     collection.add("111");
     collection.add("222");
@@ -92,7 +92,7 @@ test("Method `contains`", (t) => {
 });
 
 test("Method `containsAll`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     collection.add("111");
     collection.add("222");
@@ -100,7 +100,7 @@ test("Method `containsAll`", (t) => {
 
     t.deepEqual(collection.toArray(), ["111", "222", "333"]);
 
-    const collection1: AbstractList = new ArrayList<string>();
+    const collection1: AbstractCollection = new ArrayList<string>();
 
     collection1.add("111");
     collection1.add("222");
@@ -108,7 +108,7 @@ test("Method `containsAll`", (t) => {
     t.deepEqual(collection1.toArray(), ["111", "222", "333"]);
     t.true(collection.containsAll(collection1));
 
-    const collection2: AbstractList = new ArrayList<string>();
+    const collection2: AbstractCollection = new ArrayList<string>();
     collection2.add("000");
     collection2.add("010");
     collection2.add("111");
@@ -117,14 +117,14 @@ test("Method `containsAll`", (t) => {
 });
 
 test("Method `equals`", (t) => {
-    const collection1: AbstractList = new ArrayList<string>();
+    const collection1: AbstractCollection = new ArrayList<string>();
 
     collection1.add("111");
     collection1.add("222");
     collection1.add("333");
     t.deepEqual(collection1.toArray(), ["111", "222", "333"]);
 
-    const collection2: AbstractList = new ArrayList<string>();
+    const collection2: AbstractCollection = new ArrayList<string>();
 
     collection2.add("111");
     collection2.add("222");
@@ -135,7 +135,7 @@ test("Method `equals`", (t) => {
 });
 
 test("Method `hashCode`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     let val1: number;
     let val2: number;
@@ -148,7 +148,7 @@ test("Method `hashCode`", (t) => {
 });
 
 test("Method `isEmpty`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     t.true(collection.isEmpty());
 
@@ -162,7 +162,7 @@ test("Method `isEmpty`", (t) => {
 });
 
 test("Method `remove`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     collection.add("111");
     collection.add("222");
@@ -188,8 +188,8 @@ test("Method `remove`", (t) => {
 });
 
 test("Method `removeAll`", (t) => {
-    const collection1: AbstractList = new ArrayList<string>();
-    const collection2: AbstractList = new ArrayList<string>();
+    const collection1: AbstractCollection = new ArrayList<string>();
+    const collection2: AbstractCollection = new ArrayList<string>();
 
     collection1.add("111");
     collection1.add("222");
@@ -205,7 +205,7 @@ test("Method `removeAll`", (t) => {
 });
 
 test("Method `size`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     t.is(collection.size(), 0);
 
@@ -217,61 +217,8 @@ test("Method `size`", (t) => {
 });
 
 test("Method `toArray`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
+    const collection: AbstractCollection = new ArrayList<string>();
 
     t.is(typeof collection.toArray(), "object");
     t.true(Array.isArray(collection.toArray()));
-});
-
-test("Method `get`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
-
-    collection.add("111");
-    collection.add("222");
-    collection.add("333");
-    collection.add("111");
-
-    t.is(collection.get(0), "111");
-    t.is(collection.get(1), "222");
-});
-
-test("Method `indexOf`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
-
-    collection.add("111");
-    collection.add("222");
-    collection.add("333");
-    collection.add("111");
-
-    t.is(collection.indexOf("111"), 0);
-    t.is(collection.indexOf("222"), 1);
-});
-
-test("Method `lastIndexOf`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
-
-    collection.add("111");
-    collection.add("222");
-    collection.add("333");
-    collection.add("111");
-
-    t.is(collection.lastIndexOf("111"), 3);
-    t.is(collection.lastIndexOf("222"), 1);
-});
-
-test("Method `set`", (t) => {
-    const collection: AbstractList = new ArrayList<string>();
-
-    collection.add("111");
-    collection.add("222");
-    collection.add("333");
-    collection.add("111");
-
-    t.deepEqual(collection.toArray(), ["111", "222", "333", "111"]);
-
-    collection.set(1, "123");
-    t.deepEqual(collection.toArray(), ["111", "123", "333", "111"]);
-
-    collection.set(3, "444");
-    t.deepEqual(collection.toArray(), ["111", "123", "333", "444"]);
 });
