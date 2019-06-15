@@ -11,7 +11,7 @@
     "build:prod": "npm run tsc -- -P tsconfig.prod.json",
     "build:test": "npm run tsc -- -P tsconfig.test.json",
     "pretest": "npm run clean && npm run build:test",
-    "test": "ava dist/test/**/*.{spec,e2e}.js",
+    "test": "ava 'dist/test/**/*.{spec,e2e}.js'",
     "lint": "npm run lint:typescript && npm run lint:javascript",
     "lint:typescript": "tslint {lib,test}/**/*.ts",
     "lint:javascript": "eslint ./**/*.js"
@@ -54,6 +54,7 @@
     "lint-staged": "^8.1.7",
     "prettier": "^1.17.1",
     "rimraf": "^2.6.3",
+    "source-map-support": "^0.5.12",
     "tslint": "^5.17.0",
     "typescript": "^3.5.1"
   }
