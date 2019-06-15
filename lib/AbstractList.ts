@@ -2,7 +2,6 @@ import { AbstractCollection } from "./AbstractCollection";
 import { Collection } from "./interfaces/Collection";
 import { Consumer } from "./interfaces/Consumer";
 import { List } from "./interfaces/List";
-import { Iterator } from "./Iterator";
 import { HashCode } from "./utils/HashCode";
 
 export abstract class AbstractList<T = any> extends AbstractCollection<T>
@@ -20,7 +19,22 @@ export abstract class AbstractList<T = any> extends AbstractCollection<T>
     }
 
     public iterator() {
-        return new Iterator(this.arr);
+        let index = -1;
+        const self = this;
+        return {
+            hasNext() {
+                return index + 1 < self.arr.length;
+            },
+            next() {
+                index++;
+                return self.arr[index];
+            },
+            remove() {
+                if (index !== -1) {
+                    self.arr.splice(index, 1);
+                }
+            }
+        };
     }
 
     // interface Collection
@@ -69,11 +83,6 @@ export abstract class AbstractList<T = any> extends AbstractCollection<T>
         if (this.size() !== c.size() || this.hashCode() !== c.hashCode()) {
             return false;
         }
-        // for (let i = 0, length = c.toArray().length; i < length; i++) {
-        //     if (this.arr[i] !== c.get(i)) {
-        //         return false;
-        //     }
-        // }
         return true;
     }
 

@@ -24,9 +24,13 @@ test("Method `iterator`", (t) => {
 
     const iterator = collection.iterator();
 
+    t.true(iterator.hasNext());
     t.is(iterator.next(), "111");
+    t.true(iterator.hasNext());
     t.is(iterator.next(), "222");
+    t.true(iterator.hasNext());
     t.is(iterator.next(), "333");
+    t.false(iterator.hasNext());
 });
 
 test("Method `iterator-remove`", (t) => {

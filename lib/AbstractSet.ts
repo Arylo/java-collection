@@ -1,8 +1,8 @@
+import { Iterator } from ".//interfaces/Iterator";
 import { AbstractCollection } from "./AbstractCollection";
 import { Collection } from "./interfaces/Collection";
 import { Consumer } from "./interfaces/Consumer";
 import { Set as S } from "./interfaces/Set";
-import { Iterator } from "./Iterator";
 import { HashCode } from "./utils/HashCode";
 
 export class AbstractSet<T> extends AbstractCollection<T> implements S<T> {
@@ -18,8 +18,23 @@ export class AbstractSet<T> extends AbstractCollection<T> implements S<T> {
         }
     }
 
-    public iterator() {
-        return new Iterator([...this.set]);
+    public iterator(): Iterator<T> {
+        let index = -1;
+        const self = this;
+        return {
+            hasNext() {
+                return index - 1 < self.size();
+            },
+            next() {
+                index++;
+                return self.toArray()[index];
+            },
+            remove() {
+                if (index !== -1) {
+                    self.set.delete(self.toArray()[index]);
+                }
+            }
+        };
     }
 
     public add(t: T): boolean {
