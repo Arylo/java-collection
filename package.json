@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/Arylo/java-collection#readme",
   "license": "MIT",
-  "yVersion": "2.1.22",
+  "yVersion": "2.1.23",
   "devDependencies": {
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
