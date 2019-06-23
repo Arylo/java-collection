@@ -5,8 +5,7 @@ import { List } from "./interfaces/List";
 import { RandomAccess } from "./interfaces/RandomAccess";
 import { Serializable } from "./interfaces/Serializable";
 
-export class ArrayList<T = any> extends AbstractList<T>
-    implements List<T>, RandomAccess, Cloneable, Serializable {
+export class ArrayList<T = any> extends AbstractList<T> implements List<T>, RandomAccess, Cloneable, Serializable {
     constructor(c?: Collection<T> | number) {
         super();
         if (typeof c === "undefined") {
@@ -16,20 +15,5 @@ export class ArrayList<T = any> extends AbstractList<T>
         } else {
             this.arr = c.toArray();
         }
-    }
-
-    // interface RandomAccess
-
-    public [Symbol.iterator]() {
-        let index = 0;
-        const self = this;
-        return {
-            next() {
-                return {
-                    value: self.arr[index],
-                    done: index++ >= self.size() ? true : false
-                };
-            }
-        };
     }
 }

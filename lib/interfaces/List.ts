@@ -12,4 +12,6 @@ export interface List<T = any> extends Collection<T> {
 
     indexOf(val: T): number;
     lastIndexOf(val: T): number;
+
+    [Symbol.iterator]();
 }

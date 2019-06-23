@@ -4,8 +4,7 @@ import { Consumer } from "./interfaces/Consumer";
 import { List } from "./interfaces/List";
 import { HashCode } from "./utils/HashCode";
 
-export abstract class AbstractList<T = any> extends AbstractCollection<T>
-    implements List<T> {
+export abstract class AbstractList<T = any> extends AbstractCollection<T> implements List<T> {
     protected arr: T[] = [];
 
     // interface Iterable
@@ -142,13 +141,23 @@ export abstract class AbstractList<T = any> extends AbstractCollection<T>
 
     public hashCode(): number {
         const arrLength = this.size();
-        if (
-            this.hashDeep !== arrLength ||
-            (this.size() !== 0 && this.hash === 0)
-        ) {
+        if (this.hashDeep !== arrLength || (this.size() !== 0 && this.hash === 0)) {
             this.hash = HashCode.fromArray(this.toArray());
             this.hashDeep = this.size();
         }
         return this.hash;
+    }
+
+    public [Symbol.iterator]() {
+        let index = 0;
+        const self = this;
+        return {
+            next() {
+                return {
+                    value: self.arr[index],
+                    done: index++ >= self.size() ? true : false
+                };
+            }
+        };
     }
 }
