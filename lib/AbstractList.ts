@@ -7,6 +7,17 @@ import { HashCode } from "./utils/HashCode";
 export abstract class AbstractList<T = any> extends AbstractCollection<T> implements List<T> {
     protected arr: T[] = [];
 
+    constructor(c?: Collection<T> | T[]) {
+        super();
+        if (typeof c === "undefined") {
+            return;
+        } else if (Array.isArray(c)) {
+            this.arr = c;
+        } else {
+            this.arr = c.toArray();
+        }
+    }
+
     // interface Iterable
 
     public forEach(fn: Consumer<T> | ((item: T) => any)) {
@@ -155,7 +166,7 @@ export abstract class AbstractList<T = any> extends AbstractCollection<T> implem
             next() {
                 return {
                     value: self.arr[index],
-                    done: index++ >= self.size() ? true : false
+                    done: index++ >= self.size()
                 };
             }
         };

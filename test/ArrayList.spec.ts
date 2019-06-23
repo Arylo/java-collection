@@ -10,15 +10,8 @@ test("Constructors ", (t) => {
     });
 });
 
-test("Method `for..of`", (t) => {
-    const collection = new ArrayList<string>();
+test("Constructors number", (t) => {
+    const collection = new ArrayList<string>(10);
 
-    collection.add("111");
-    collection.add("222");
-    collection.add("333");
-
-    t.plan(3);
-    for (const item of collection) {
-        t.pass();
-    }
+    t.is(collection.size(), 10);
 });

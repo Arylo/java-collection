@@ -62,14 +62,7 @@ test("Method `addAll`", (t) => {
     collection2.add("111");
 
     collection1.addAll(collection2);
-    t.deepEqual(collection1.toArray(), [
-        "111",
-        "222",
-        "333",
-        "000",
-        "010",
-        "111"
-    ]);
+    t.deepEqual(collection1.toArray(), ["111", "222", "333", "000", "010", "111"]);
 });
 
 test("Method `clear`", (t) => {
@@ -175,14 +168,7 @@ test("Method `remove`", (t) => {
     collection.add("222");
     collection.add("333");
 
-    t.deepEqual(collection.toArray(), [
-        "111",
-        "222",
-        "333",
-        "111",
-        "222",
-        "333"
-    ]);
+    t.deepEqual(collection.toArray(), ["111", "222", "333", "111", "222", "333"]);
 
     collection.remove("111");
     t.deepEqual(collection.toArray(), ["222", "333", "222", "333"]);
@@ -278,4 +264,17 @@ test("Method `set`", (t) => {
 
     collection.set(3, "444");
     t.deepEqual(collection.toArray(), ["111", "123", "333", "444"]);
+});
+
+test("Method `for..of`", (t) => {
+    const collection = new ArrayList<string>();
+
+    collection.add("111");
+    collection.add("222");
+    collection.add("333");
+
+    t.plan(3);
+    for (const item of collection) {
+        t.pass();
+    }
 });
